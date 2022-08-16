@@ -1,0 +1,26 @@
+name: "portfolio"
+output_dir: docs
+navbar:
+  title: "Portfolio"
+  left:
+    - text: "Home"
+      href: 00index.html
+    - text: "Portfolio 1"
+      href: 01p.html
+    - text: "Portfolio 2"
+      href: 02p.html
+    - text: "Portfolio 3"
+      href: 03p.html
+    - text: "Portfolio 4"
+      href: 04p.html
+    - text: "Portfolio 5"
+      href: 05p.html
+    - text: "Portfolio 6"
+      href: 06p.html
+    - text: "Portfolio 7"
+      href: 07p.html
+    - text: "Portfolio 8"
+      href: 08p.html
+    - text: "Portfolio 9"
+      href: 09p.html
+ 
