@@ -1,0 +1,31 @@
+{
+    "id": "F4E5E304",
+    "path": "C:/data/GitHub/portfolio/index.Rmd",
+    "project_path": "index.Rmd",
+    "type": "r_markdown",
+    "hash": "2754316518",
+    "contents": "",
+    "dirty": false,
+    "created": 1660624635287.0,
+    "source_on_save": false,
+    "relative_order": 1,
+    "properties": {
+        "source_window_id": "",
+        "Source": "Source",
+        "cursorPosition": "16,78",
+        "scrollLine": "13",
+        "rmdVisualMode": "false",
+        "rmdVisualWrapConfigured": "true",
+        "docOutlineVisible": "1",
+        "rmdVisualModeLocation": "940:166",
+        "rmdVisualCollapsedChunks": ""
+    },
+    "folds": "",
+    "lastKnownWriteTime": 1660624580,
+    "encoding": "UTF-8",
+    "collab_server": "",
+    "source_window": "",
+    "last_content_update": 1660624580,
+    "read_only": false,
+    "read_only_alternatives": []
+}

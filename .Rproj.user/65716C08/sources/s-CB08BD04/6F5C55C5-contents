@@ -1,22 +1,10 @@
 ---
-title: "Portfolio4"
+title: "Portfolio4: multilevel simulation"
 author: "Yoo Ri Hwang"
 date: "3/11/2022"
 output: html_document
 ---
 
-# source
-
-# Portfolio4
-Portfolio_DS4P
-
-Simulation code
-
-Reference 1: https://education.illinois.edu/docs/default-source/carolyn-anderson/edpsy587/lectures/5-estimation/r_markdown_simulate174c1f2f-4e53-45a6-8e56-afb521343a79.html?Status=Master&sfvrsn=6574ad6b_3&download=true/https://education.illinois.edu/docs/default-source/carolyn-anderson/edpsy587/lectures/5-estimation/r_markdown_simulate174c1f2f-4e53-45a6-8e56-afb521343a79.html
-
-Reference 2: https://personality-project.org/r/html/sim.multilevel.html
-
-Reference 3: https://bookdown.org/marklhc/notes/simulating-multilevel-data.html#linear-growth-model
 
 ## Packages 
 
@@ -53,6 +41,7 @@ Reference 3: https://bookdown.org/marklhc/notes/simulating-multilevel-data.html#
 5:https://journals.sagepub.com/doi/full/10.1177/2515245920965119
 
 6:https://cran.r-project.org/web/packages/simglm/vignettes/tidy_simulation.html
+
 
 # Simulation of Multilevel data 
 
@@ -482,4 +471,4 @@ fixefs_time%>%
  
 ```
 
-As this simulation graph shows, big sample size make graph more normal-like shape. 
+As this simulation graph shows, large sample size make graph more normal-like shape. 

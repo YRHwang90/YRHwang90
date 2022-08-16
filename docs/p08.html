@@ -12,7 +12,7 @@
 <meta name="author" content="Yoo Ri Hwang" />
 
 
-<title>Untitled</title>
+<title>Portfoilio 8 : SEM</title>
 
 <script src="site_libs/header-attrs-2.14/header-attrs.js"></script>
 <script src="site_libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
@@ -247,34 +247,34 @@ $(document).ready(function () {
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
         <li>
-  <a href="00index.html">Home</a>
+  <a href="index.html">Index</a>
 </li>
 <li>
-  <a href="01p.html">Portfolio 1</a>
+  <a href="p01.html">Portfolio 1</a>
 </li>
 <li>
-  <a href="02p.html">Portfolio 2</a>
+  <a href="p02.html">Portfolio 2</a>
 </li>
 <li>
-  <a href="03p.html">Portfolio 3</a>
+  <a href="p03.html">Portfolio 3</a>
 </li>
 <li>
-  <a href="04p.html">Portfolio 4</a>
+  <a href="p04.html">Portfolio 4</a>
 </li>
 <li>
-  <a href="05p.html">Portfolio 5</a>
+  <a href="p05.html">Portfolio 5</a>
 </li>
 <li>
-  <a href="06p.html">Portfolio 6</a>
+  <a href="p06.html">Portfolio 6</a>
 </li>
 <li>
-  <a href="07p.html">Portfolio 7</a>
+  <a href="p07.html">Portfolio 7</a>
 </li>
 <li>
-  <a href="08p.html">Portfolio 8</a>
+  <a href="p08.html">Portfolio 8</a>
 </li>
 <li>
-  <a href="09p.html">Portfolio 9</a>
+  <a href="p09.html">Portfolio 9</a>
 </li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
@@ -288,7 +288,7 @@ $(document).ready(function () {
 
 
 
-<h1 class="title toc-ignore">Untitled</h1>
+<h1 class="title toc-ignore">Portfoilio 8 : SEM</h1>
 <h4 class="author">Yoo Ri Hwang</h4>
 <h4 class="date">3/28/2022</h4>
 
@@ -391,42 +391,42 @@ simData &lt;- lavaan::simulateData(demo.model, sample.nobs=200)
 
 # see the describtive stats
 psych::describe(simData)</code></pre>
-<pre><code>##    vars   n mean   sd median trimmed  mad   min  max range  skew kurtosis   se
-## x1    1 200 0.10 0.98   0.06    0.10 1.03 -2.66 3.37  6.03  0.05    -0.09 0.07
-## x2    2 200 0.12 1.04   0.08    0.13 1.00 -2.53 3.42  5.95  0.03     0.20 0.07
-## x3    3 200 0.18 0.95   0.20    0.19 0.95 -2.22 3.05  5.27 -0.03    -0.08 0.07
-## x4    4 200 0.11 1.00   0.12    0.09 1.06 -2.44 3.22  5.66  0.25    -0.03 0.07
-## x5    5 200 0.08 0.96   0.12    0.07 1.00 -2.35 2.83  5.18  0.09    -0.05 0.07
-## y     6 200 0.16 0.98   0.15    0.14 0.96 -3.13 2.76  5.90  0.03     0.15 0.07</code></pre>
+<pre><code>##    vars   n  mean   sd median trimmed  mad   min  max range  skew kurtosis   se
+## x1    1 200  0.04 1.03   0.05    0.08 0.99 -2.97 2.81  5.79 -0.25     0.08 0.07
+## x2    2 200 -0.04 1.10  -0.02   -0.02 1.14 -2.97 2.93  5.90 -0.11     0.01 0.08
+## x3    3 200  0.06 1.06   0.12    0.09 0.98 -3.33 3.01  6.35 -0.28     0.51 0.07
+## x4    4 200  0.02 1.10   0.08    0.02 1.23 -2.76 3.09  5.86 -0.04    -0.49 0.08
+## x5    5 200  0.06 1.02   0.07    0.04 1.00 -2.66 2.53  5.19  0.11    -0.25 0.07
+## y     6 200  0.00 1.08   0.02    0.02 1.18 -3.17 3.22  6.38 -0.11     0.04 0.08</code></pre>
 <pre class="r"><code># multivariate nurmality test 
 
 mv&lt;-mardia(simData)
 mv</code></pre>
 <pre><code>## $mv.test
 ##           Test Statistic p-value Result
-## 1     Skewness   59.7789  0.3402    YES
-## 2     Kurtosis    0.3328  0.7393    YES
+## 1     Skewness   52.2847  0.6163    YES
+## 2     Kurtosis    0.0416  0.9668    YES
 ## 3 MV Normality      &lt;NA&gt;    &lt;NA&gt;    YES
 ## 
 ## $uv.shapiro
 ##    W      p-value UV.Normality
-## x1 0.9952 0.7832  Yes         
-## x2 0.9923 0.3777  Yes         
-## x3 0.9947 0.71    Yes         
-## x4 0.9948 0.7252  Yes         
-## x5 0.9961 0.8918  Yes         
-## y  0.993  0.4635  Yes</code></pre>
+## x1 0.9914 0.2829  Yes         
+## x2 0.9944 0.6621  Yes         
+## x3 0.9903 0.1956  Yes         
+## x4 0.9931 0.4722  Yes         
+## x5 0.9935 0.5307  Yes         
+## y  0.9958 0.8552  Yes</code></pre>
 <pre class="r"><code>#?simulateData
 
 sim.cor &lt;-cor(simData, use=&quot;pairwise.complete.obs&quot;, method=&quot;pearson&quot;)
 sim.cor</code></pre>
 <pre><code>##           x1        x2        x3        x4        x5         y
-## x1 1.0000000 0.6209670 0.6046490 0.5558377 0.5772948 0.2286995
-## x2 0.6209670 1.0000000 0.6705583 0.6156631 0.6072827 0.2457051
-## x3 0.6046490 0.6705583 1.0000000 0.6708585 0.5987044 0.2434647
-## x4 0.5558377 0.6156631 0.6708585 1.0000000 0.6180242 0.1876090
-## x5 0.5772948 0.6072827 0.5987044 0.6180242 1.0000000 0.1291282
-## y  0.2286995 0.2457051 0.2434647 0.1876090 0.1291282 1.0000000</code></pre>
+## x1 1.0000000 0.7111977 0.7016938 0.6912733 0.6421563 0.3532336
+## x2 0.7111977 1.0000000 0.7100584 0.6924437 0.6727274 0.3796734
+## x3 0.7016938 0.7100584 1.0000000 0.6722241 0.7182953 0.3118240
+## x4 0.6912733 0.6924437 0.6722241 1.0000000 0.6692418 0.2807331
+## x5 0.6421563 0.6727274 0.7182953 0.6692418 1.0000000 0.2970388
+## y  0.3532336 0.3796734 0.3118240 0.2807331 0.2970388 1.0000000</code></pre>
 </div>
 <div id="specify-the-model" class="section level3">
 <h3>specify the model</h3>
@@ -443,7 +443,7 @@ x5~~x5
 tofit.model_m &lt;- sem(tofit.model, simData)
 
 summary(tofit.model_m, fit.measures=T)</code></pre>
-<pre><code>## lavaan 0.6-11 ended normally after 21 iterations
+<pre><code>## lavaan 0.6-11 ended normally after 22 iterations
 ## 
 ##   Estimator                                         ML
 ##   Optimization method                           NLMINB
@@ -453,40 +453,40 @@ summary(tofit.model_m, fit.measures=T)</code></pre>
 ##                                                       
 ## Model Test User Model:
 ##                                                       
-##   Test statistic                                 9.006
+##   Test statistic                                 9.912
 ##   Degrees of freedom                                 9
-##   P-value (Chi-square)                           0.437
+##   P-value (Chi-square)                           0.358
 ## 
 ## Model Test Baseline Model:
 ## 
-##   Test statistic                               540.924
+##   Test statistic                               710.250
 ##   Degrees of freedom                                15
 ##   P-value                                        0.000
 ## 
 ## User Model versus Baseline Model:
 ## 
-##   Comparative Fit Index (CFI)                    1.000
-##   Tucker-Lewis Index (TLI)                       1.000
+##   Comparative Fit Index (CFI)                    0.999
+##   Tucker-Lewis Index (TLI)                       0.998
 ## 
 ## Loglikelihood and Information Criteria:
 ## 
-##   Loglikelihood user model (H0)              -1416.598
-##   Loglikelihood unrestricted model (H1)      -1412.095
+##   Loglikelihood user model (H0)              -1423.811
+##   Loglikelihood unrestricted model (H1)      -1418.854
 ##                                                       
-##   Akaike (AIC)                                2857.196
-##   Bayesian (BIC)                              2896.776
-##   Sample-size adjusted Bayesian (BIC)         2858.759
+##   Akaike (AIC)                                2871.621
+##   Bayesian (BIC)                              2911.201
+##   Sample-size adjusted Bayesian (BIC)         2873.184
 ## 
 ## Root Mean Square Error of Approximation:
 ## 
-##   RMSEA                                          0.002
+##   RMSEA                                          0.023
 ##   90 Percent confidence interval - lower         0.000
-##   90 Percent confidence interval - upper         0.080
-##   P-value RMSEA &lt;= 0.05                          0.757
+##   90 Percent confidence interval - upper         0.085
+##   P-value RMSEA &lt;= 0.05                          0.695
 ## 
 ## Standardized Root Mean Square Residual:
 ## 
-##   SRMR                                           0.024
+##   SRMR                                           0.020
 ## 
 ## Parameter Estimates:
 ## 
@@ -498,25 +498,25 @@ summary(tofit.model_m, fit.measures=T)</code></pre>
 ##                    Estimate  Std.Err  z-value  P(&gt;|z|)
 ##   f =~                                                
 ##     x1                1.000                           
-##     x2                1.159    0.103   11.215    0.000
-##     x3                1.079    0.094   11.442    0.000
-##     x4                1.080    0.099   10.884    0.000
-##     x5                0.989    0.095   10.401    0.000
+##     x2                1.094    0.076   14.333    0.000
+##     x3                1.050    0.073   14.335    0.000
+##     x4                1.055    0.078   13.538    0.000
+##     x5                0.968    0.072   13.395    0.000
 ## 
 ## Regressions:
 ##                    Estimate  Std.Err  z-value  P(&gt;|z|)
 ##   y ~                                                 
-##     f                 0.362    0.101    3.598    0.000
+##     f                 0.498    0.090    5.559    0.000
 ## 
 ## Variances:
 ##                    Estimate  Std.Err  z-value  P(&gt;|z|)
-##    .x1                0.427    0.050    8.473    0.000
-##    .x2                0.374    0.049    7.634    0.000
-##    .x3                0.286    0.039    7.323    0.000
-##    .x4                0.381    0.048    7.993    0.000
-##    .x5                0.396    0.047    8.388    0.000
-##    .y                 0.894    0.090    9.906    0.000
-##     f                 0.528    0.090    5.900    0.000</code></pre>
+##    .x1                0.326    0.041    7.993    0.000
+##    .x2                0.341    0.044    7.702    0.000
+##    .x3                0.314    0.041    7.700    0.000
+##    .x4                0.408    0.050    8.218    0.000
+##    .x5                0.358    0.043    8.294    0.000
+##    .y                 0.977    0.099    9.838    0.000
+##     f                 0.723    0.103    7.042    0.000</code></pre>
 <pre class="r"><code>inspect(tofit.model_m)</code></pre>
 <pre><code>## $lambda
 ##    f y
@@ -568,19 +568,19 @@ summary(hey)</code></pre>
 ## lm(formula = y ~ x2, data = simData)
 ## 
 ## Residuals:
-##      Min       1Q   Median       3Q      Max 
-## -2.90163 -0.62783 -0.05206  0.59745  2.25316 
+##     Min      1Q  Median      3Q     Max 
+## -3.2621 -0.6406 -0.0049  0.5680  2.8203 
 ## 
 ## Coefficients:
 ##             Estimate Std. Error t value Pr(&gt;|t|)    
-## (Intercept)  0.13088    0.06806   1.923 0.055895 .  
-## x2           0.23165    0.06495   3.567 0.000453 ***
+## (Intercept)  0.01557    0.07075   0.220    0.826    
+## x2           0.37167    0.06436   5.775 2.94e-08 ***
 ## ---
 ## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
 ## 
-## Residual standard error: 0.9559 on 198 degrees of freedom
-## Multiple R-squared:  0.06037,    Adjusted R-squared:  0.05563 
-## F-statistic: 12.72 on 1 and 198 DF,  p-value: 0.0004533</code></pre>
+## Residual standard error: 0.9999 on 198 degrees of freedom
+## Multiple R-squared:  0.1442, Adjusted R-squared:  0.1398 
+## F-statistic: 33.35 on 1 and 198 DF,  p-value: 2.943e-08</code></pre>
 <p>results interpretaion:</p>
 <p>as one unit increase in x1, the y score improves approaximatly 0.508,
 and Significant. the residual standard error is 1.087. the residual
@@ -615,17 +615,17 @@ summary(hey2fit)</code></pre>
 ## Regressions:
 ##                    Estimate  Std.Err  z-value  P(&gt;|z|)
 ##   y ~                                                 
-##     x2                0.232    0.065    3.585    0.000
+##     x2                0.372    0.064    5.804    0.000
 ## 
 ## Intercepts:
 ##                    Estimate  Std.Err  z-value  P(&gt;|z|)
-##    .y                 0.131    0.068    1.933    0.053
-##     x2                0.122    0.074    1.658    0.097
+##    .y                 0.016    0.070    0.221    0.825
+##     x2               -0.038    0.078   -0.495    0.621
 ## 
 ## Variances:
 ##                    Estimate  Std.Err  z-value  P(&gt;|z|)
-##     x2                1.083    0.108   10.000    0.000
-##    .y                 0.905    0.090   10.000    0.000</code></pre>
+##     x2                1.207    0.121   10.000    0.000
+##    .y                 0.990    0.099   10.000    0.000</code></pre>
 <pre class="r"><code>semPlot::semPaths(hey2fit)</code></pre>
 <p><img src="p08_files/figure-html/unnamed-chunk-5-1.png" width="672" /></p>
 <p>results interpretaion:</p>
