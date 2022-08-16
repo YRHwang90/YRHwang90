@@ -1,0 +1,910 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+<meta charset="utf-8" />
+<meta name="generator" content="pandoc" />
+<meta http-equiv="X-UA-Compatible" content="IE=EDGE" />
+
+
+<meta name="author" content="Yoo Ri Hwang" />
+
+
+<title>Untitled</title>
+
+<script src="site_libs/header-attrs-2.14/header-attrs.js"></script>
+<script src="site_libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link href="site_libs/bootstrap-3.3.5/css/bootstrap.min.css" rel="stylesheet" />
+<script src="site_libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/respond.min.js"></script>
+<style>h1 {font-size: 34px;}
+       h1.title {font-size: 38px;}
+       h2 {font-size: 30px;}
+       h3 {font-size: 24px;}
+       h4 {font-size: 18px;}
+       h5 {font-size: 16px;}
+       h6 {font-size: 12px;}
+       code {color: inherit; background-color: rgba(0, 0, 0, 0.04);}
+       pre:not([class]) { background-color: white }</style>
+<script src="site_libs/navigation-1.1/tabsets.js"></script>
+<link href="site_libs/highlightjs-9.12.0/default.css" rel="stylesheet" />
+<script src="site_libs/highlightjs-9.12.0/highlight.js"></script>
+
+<style type="text/css">
+  code{white-space: pre-wrap;}
+  span.smallcaps{font-variant: small-caps;}
+  span.underline{text-decoration: underline;}
+  div.column{display: inline-block; vertical-align: top; width: 50%;}
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+  ul.task-list{list-style: none;}
+    </style>
+
+<style type="text/css">code{white-space: pre;}</style>
+<script type="text/javascript">
+if (window.hljs) {
+  hljs.configure({languages: []});
+  hljs.initHighlightingOnLoad();
+  if (document.readyState && document.readyState === "complete") {
+    window.setTimeout(function() { hljs.initHighlighting(); }, 0);
+  }
+}
+</script>
+
+
+
+
+
+
+
+
+
+<style type = "text/css">
+.main-container {
+  max-width: 940px;
+  margin-left: auto;
+  margin-right: auto;
+}
+img {
+  max-width:100%;
+}
+.tabbed-pane {
+  padding-top: 12px;
+}
+.html-widget {
+  margin-bottom: 20px;
+}
+button.code-folding-btn:focus {
+  outline: none;
+}
+summary {
+  display: list-item;
+}
+details > summary > p:only-child {
+  display: inline;
+}
+pre code {
+  padding: 0;
+}
+</style>
+
+
+<style type="text/css">
+.dropdown-submenu {
+  position: relative;
+}
+.dropdown-submenu>.dropdown-menu {
+  top: 0;
+  left: 100%;
+  margin-top: -6px;
+  margin-left: -1px;
+  border-radius: 0 6px 6px 6px;
+}
+.dropdown-submenu:hover>.dropdown-menu {
+  display: block;
+}
+.dropdown-submenu>a:after {
+  display: block;
+  content: " ";
+  float: right;
+  width: 0;
+  height: 0;
+  border-color: transparent;
+  border-style: solid;
+  border-width: 5px 0 5px 5px;
+  border-left-color: #cccccc;
+  margin-top: 5px;
+  margin-right: -10px;
+}
+.dropdown-submenu:hover>a:after {
+  border-left-color: #adb5bd;
+}
+.dropdown-submenu.pull-left {
+  float: none;
+}
+.dropdown-submenu.pull-left>.dropdown-menu {
+  left: -100%;
+  margin-left: 10px;
+  border-radius: 6px 0 6px 6px;
+}
+</style>
+
+<script type="text/javascript">
+// manage active state of menu based on current page
+$(document).ready(function () {
+  // active menu anchor
+  href = window.location.pathname
+  href = href.substr(href.lastIndexOf('/') + 1)
+  if (href === "")
+    href = "index.html";
+  var menuAnchor = $('a[href="' + href + '"]');
+
+  // mark it active
+  menuAnchor.tab('show');
+
+  // if it's got a parent navbar menu mark it active as well
+  menuAnchor.closest('li.dropdown').addClass('active');
+
+  // Navbar adjustments
+  var navHeight = $(".navbar").first().height() + 15;
+  var style = document.createElement('style');
+  var pt = "padding-top: " + navHeight + "px; ";
+  var mt = "margin-top: -" + navHeight + "px; ";
+  var css = "";
+  // offset scroll position for anchor links (for fixed navbar)
+  for (var i = 1; i <= 6; i++) {
+    css += ".section h" + i + "{ " + pt + mt + "}\n";
+  }
+  style.innerHTML = "body {" + pt + "padding-bottom: 40px; }\n" + css;
+  document.head.appendChild(style);
+});
+</script>
+
+<!-- tabsets -->
+
+<style type="text/css">
+.tabset-dropdown > .nav-tabs {
+  display: inline-table;
+  max-height: 500px;
+  min-height: 44px;
+  overflow-y: auto;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+.tabset-dropdown > .nav-tabs > li.active:before {
+  content: "";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li.active:before {
+  content: "&#xe258;";
+  border: none;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open:before {
+  content: "";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+
+.tabset-dropdown > .nav-tabs > li.active {
+  display: block;
+}
+
+.tabset-dropdown > .nav-tabs > li > a,
+.tabset-dropdown > .nav-tabs > li > a:focus,
+.tabset-dropdown > .nav-tabs > li > a:hover {
+  border: none;
+  display: inline-block;
+  border-radius: 4px;
+  background-color: transparent;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li {
+  display: block;
+  float: none;
+}
+
+.tabset-dropdown > .nav-tabs > li {
+  display: none;
+}
+</style>
+
+<!-- code folding -->
+
+
+
+
+</head>
+
+<body>
+
+
+<div class="container-fluid main-container">
+
+
+
+
+<div class="navbar navbar-default  navbar-fixed-top" role="navigation">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-bs-toggle="collapse" data-target="#navbar" data-bs-target="#navbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="index.html">Portfolio</a>
+    </div>
+    <div id="navbar" class="navbar-collapse collapse">
+      <ul class="nav navbar-nav">
+        <li>
+  <a href="00index.html">Home</a>
+</li>
+<li>
+  <a href="01p.html">Portfolio 1</a>
+</li>
+<li>
+  <a href="02p.html">Portfolio 2</a>
+</li>
+<li>
+  <a href="03p.html">Portfolio 3</a>
+</li>
+<li>
+  <a href="04p.html">Portfolio 4</a>
+</li>
+<li>
+  <a href="05p.html">Portfolio 5</a>
+</li>
+<li>
+  <a href="06p.html">Portfolio 6</a>
+</li>
+<li>
+  <a href="07p.html">Portfolio 7</a>
+</li>
+<li>
+  <a href="08p.html">Portfolio 8</a>
+</li>
+<li>
+  <a href="09p.html">Portfolio 9</a>
+</li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        
+      </ul>
+    </div><!--/.nav-collapse -->
+  </div><!--/.container -->
+</div><!--/.navbar -->
+
+<div id="header">
+
+
+
+<h1 class="title toc-ignore">Untitled</h1>
+<h4 class="author">Yoo Ri Hwang</h4>
+<h4 class="date">3/28/2022</h4>
+
+</div>
+
+
+<div id="overview" class="section level2">
+<h2>Overview</h2>
+<p>In this project, I tried SEM. .</p>
+<p>Also, I referred many materials (see the readme file).</p>
+<p>portfolio 8 for ds4p</p>
+<p>main theme: Structure equation modeling</p>
+<p>Reference1: <a
+href="https://quantdev.ssri.psu.edu/tutorials/structural-equation-modeling-r-using-lavaan"
+class="uri">https://quantdev.ssri.psu.edu/tutorials/structural-equation-modeling-r-using-lavaan</a><br />
+Reference2: <a href="https://stats.oarc.ucla.edu/r/seminars/rsem/"
+class="uri">https://stats.oarc.ucla.edu/r/seminars/rsem/</a><br />
+Reference3: <a href="https://www.ianruginski.com/post/sem_handout7/"
+class="uri">https://www.ianruginski.com/post/sem_handout7/</a><br />
+Reference4: <a
+href="https://bookdown.org/bean_jerry/using_r_for_social_work_research/structural-equation-modeling.html"
+class="uri">https://bookdown.org/bean_jerry/using_r_for_social_work_research/structural-equation-modeling.html</a><br />
+Reference5: <a
+href="https://www.lexjansen.com/wuss/2006/tutorials/TUT-Suhr.pdf"
+class="uri">https://www.lexjansen.com/wuss/2006/tutorials/TUT-Suhr.pdf</a></p>
+<div id="what-is-sem" class="section level3">
+<h3>What is SEM</h3>
+<p>Source: in the readme file.</p>
+<p>Structure Equation Modeling (SEM) analysis the network of
+relationship between the variables (including latent constructs, and
+measured variable ).</p>
+<p>Unlike other conventional stat techniques, SES reqiures model
+specification( including measurement error specification)</p>
+<p>SES is linear statistics technique, and do not provide causality
+test.</p>
+<p>Keep in mind that SES do not provide default model. SEM has a
+powerful weapon- intuitive visulaization.</p>
+<p><em>Goals</em> 1) patterns of cov/cor among the variables 2) how much
+variance can be explianed by this specificed model.</p>
+</div>
+<div id="packages" class="section level3">
+<h3>Packages</h3>
+<pre class="r"><code>library(lavaan)</code></pre>
+<pre><code>## Warning: package &#39;lavaan&#39; was built under R version 4.1.3</code></pre>
+<pre><code>## This is lavaan 0.6-11
+## lavaan is FREE software! Please report any bugs.</code></pre>
+<pre class="r"><code>library(tidyverse)</code></pre>
+<pre><code>## -- Attaching packages --------------------------------------- tidyverse 1.3.1 --</code></pre>
+<pre><code>## v ggplot2 3.3.6     v purrr   0.3.4
+## v tibble  3.1.4     v dplyr   1.0.8
+## v tidyr   1.2.0     v stringr 1.4.0
+## v readr   2.1.2     v forcats 0.5.1</code></pre>
+<pre><code>## Warning: package &#39;ggplot2&#39; was built under R version 4.1.3</code></pre>
+<pre><code>## Warning: package &#39;tidyr&#39; was built under R version 4.1.3</code></pre>
+<pre><code>## Warning: package &#39;readr&#39; was built under R version 4.1.3</code></pre>
+<pre><code>## Warning: package &#39;dplyr&#39; was built under R version 4.1.3</code></pre>
+<pre><code>## -- Conflicts ------------------------------------------ tidyverse_conflicts() --
+## x dplyr::filter() masks stats::filter()
+## x dplyr::lag()    masks stats::lag()</code></pre>
+<pre class="r"><code>library(psych)</code></pre>
+<pre><code>## Warning: package &#39;psych&#39; was built under R version 4.1.3</code></pre>
+<pre><code>## 
+## Attaching package: &#39;psych&#39;</code></pre>
+<pre><code>## The following objects are masked from &#39;package:ggplot2&#39;:
+## 
+##     %+%, alpha</code></pre>
+<pre><code>## The following object is masked from &#39;package:lavaan&#39;:
+## 
+##     cor2cov</code></pre>
+<pre class="r"><code>library(MASS)</code></pre>
+<pre><code>## 
+## Attaching package: &#39;MASS&#39;</code></pre>
+<pre><code>## The following object is masked from &#39;package:dplyr&#39;:
+## 
+##     select</code></pre>
+<pre class="r"><code>library(mvnormalTest)</code></pre>
+<pre><code>## Warning: package &#39;mvnormalTest&#39; was built under R version 4.1.3</code></pre>
+<pre><code>## 
+## Attaching package: &#39;mvnormalTest&#39;</code></pre>
+<pre><code>## The following object is masked from &#39;package:psych&#39;:
+## 
+##     mardia</code></pre>
+<pre class="r"><code>library(semPlot)</code></pre>
+<pre><code>## Warning: package &#39;semPlot&#39; was built under R version 4.1.3</code></pre>
+</div>
+<div id="simulate-the-data" class="section level3">
+<h3>Simulate the data</h3>
+<pre class="r"><code>demo.model &lt;- &#39;
+y ~ .5*f 
+
+f =~ .8*x1 + .8*x2 + .8*x3 + .8*x4 + .8*x5  
+
+x1 ~~ (1-.8^2)*x1
+x2 ~~ (1-.8^2)*x2
+x3 ~~ (1-.8^2)*x3
+x4 ~~ (1-.8^2)*x4
+x5 ~~ (1-.8^2)*x5
+&#39;
+simData &lt;- lavaan::simulateData(demo.model, sample.nobs=200)
+
+# see the describtive stats
+psych::describe(simData)</code></pre>
+<pre><code>##    vars   n mean   sd median trimmed  mad   min  max range  skew kurtosis   se
+## x1    1 200 0.10 0.98   0.06    0.10 1.03 -2.66 3.37  6.03  0.05    -0.09 0.07
+## x2    2 200 0.12 1.04   0.08    0.13 1.00 -2.53 3.42  5.95  0.03     0.20 0.07
+## x3    3 200 0.18 0.95   0.20    0.19 0.95 -2.22 3.05  5.27 -0.03    -0.08 0.07
+## x4    4 200 0.11 1.00   0.12    0.09 1.06 -2.44 3.22  5.66  0.25    -0.03 0.07
+## x5    5 200 0.08 0.96   0.12    0.07 1.00 -2.35 2.83  5.18  0.09    -0.05 0.07
+## y     6 200 0.16 0.98   0.15    0.14 0.96 -3.13 2.76  5.90  0.03     0.15 0.07</code></pre>
+<pre class="r"><code># multivariate nurmality test 
+
+mv&lt;-mardia(simData)
+mv</code></pre>
+<pre><code>## $mv.test
+##           Test Statistic p-value Result
+## 1     Skewness   59.7789  0.3402    YES
+## 2     Kurtosis    0.3328  0.7393    YES
+## 3 MV Normality      &lt;NA&gt;    &lt;NA&gt;    YES
+## 
+## $uv.shapiro
+##    W      p-value UV.Normality
+## x1 0.9952 0.7832  Yes         
+## x2 0.9923 0.3777  Yes         
+## x3 0.9947 0.71    Yes         
+## x4 0.9948 0.7252  Yes         
+## x5 0.9961 0.8918  Yes         
+## y  0.993  0.4635  Yes</code></pre>
+<pre class="r"><code>#?simulateData
+
+sim.cor &lt;-cor(simData, use=&quot;pairwise.complete.obs&quot;, method=&quot;pearson&quot;)
+sim.cor</code></pre>
+<pre><code>##           x1        x2        x3        x4        x5         y
+## x1 1.0000000 0.6209670 0.6046490 0.5558377 0.5772948 0.2286995
+## x2 0.6209670 1.0000000 0.6705583 0.6156631 0.6072827 0.2457051
+## x3 0.6046490 0.6705583 1.0000000 0.6708585 0.5987044 0.2434647
+## x4 0.5558377 0.6156631 0.6708585 1.0000000 0.6180242 0.1876090
+## x5 0.5772948 0.6072827 0.5987044 0.6180242 1.0000000 0.1291282
+## y  0.2286995 0.2457051 0.2434647 0.1876090 0.1291282 1.0000000</code></pre>
+</div>
+<div id="specify-the-model" class="section level3">
+<h3>specify the model</h3>
+<pre class="r"><code>tofit.model &lt;- &#39;
+y ~ f 
+f =~ x1+ x2 + x3 + x4 + x5 
+x1 ~~ x1 
+x2 ~~ x2 
+x3~~x3 
+x4~~x4 
+x5~~x5 
+&#39;
+
+tofit.model_m &lt;- sem(tofit.model, simData)
+
+summary(tofit.model_m, fit.measures=T)</code></pre>
+<pre><code>## lavaan 0.6-11 ended normally after 21 iterations
+## 
+##   Estimator                                         ML
+##   Optimization method                           NLMINB
+##   Number of model parameters                        12
+##                                                       
+##   Number of observations                           200
+##                                                       
+## Model Test User Model:
+##                                                       
+##   Test statistic                                 9.006
+##   Degrees of freedom                                 9
+##   P-value (Chi-square)                           0.437
+## 
+## Model Test Baseline Model:
+## 
+##   Test statistic                               540.924
+##   Degrees of freedom                                15
+##   P-value                                        0.000
+## 
+## User Model versus Baseline Model:
+## 
+##   Comparative Fit Index (CFI)                    1.000
+##   Tucker-Lewis Index (TLI)                       1.000
+## 
+## Loglikelihood and Information Criteria:
+## 
+##   Loglikelihood user model (H0)              -1416.598
+##   Loglikelihood unrestricted model (H1)      -1412.095
+##                                                       
+##   Akaike (AIC)                                2857.196
+##   Bayesian (BIC)                              2896.776
+##   Sample-size adjusted Bayesian (BIC)         2858.759
+## 
+## Root Mean Square Error of Approximation:
+## 
+##   RMSEA                                          0.002
+##   90 Percent confidence interval - lower         0.000
+##   90 Percent confidence interval - upper         0.080
+##   P-value RMSEA &lt;= 0.05                          0.757
+## 
+## Standardized Root Mean Square Residual:
+## 
+##   SRMR                                           0.024
+## 
+## Parameter Estimates:
+## 
+##   Standard errors                             Standard
+##   Information                                 Expected
+##   Information saturated (h1) model          Structured
+## 
+## Latent Variables:
+##                    Estimate  Std.Err  z-value  P(&gt;|z|)
+##   f =~                                                
+##     x1                1.000                           
+##     x2                1.159    0.103   11.215    0.000
+##     x3                1.079    0.094   11.442    0.000
+##     x4                1.080    0.099   10.884    0.000
+##     x5                0.989    0.095   10.401    0.000
+## 
+## Regressions:
+##                    Estimate  Std.Err  z-value  P(&gt;|z|)
+##   y ~                                                 
+##     f                 0.362    0.101    3.598    0.000
+## 
+## Variances:
+##                    Estimate  Std.Err  z-value  P(&gt;|z|)
+##    .x1                0.427    0.050    8.473    0.000
+##    .x2                0.374    0.049    7.634    0.000
+##    .x3                0.286    0.039    7.323    0.000
+##    .x4                0.381    0.048    7.993    0.000
+##    .x5                0.396    0.047    8.388    0.000
+##    .y                 0.894    0.090    9.906    0.000
+##     f                 0.528    0.090    5.900    0.000</code></pre>
+<pre class="r"><code>inspect(tofit.model_m)</code></pre>
+<pre><code>## $lambda
+##    f y
+## x1 0 0
+## x2 2 0
+## x3 3 0
+## x4 4 0
+## x5 5 0
+## y  0 0
+## 
+## $theta
+##    x1 x2 x3 x4 x5 y 
+## x1  6               
+## x2  0  7            
+## x3  0  0  8         
+## x4  0  0  0  9      
+## x5  0  0  0  0 10   
+## y   0  0  0  0  0  0
+## 
+## $psi
+##   f  y 
+## f 12   
+## y  0 11
+## 
+## $beta
+##   f y
+## f 0 0
+## y 1 0</code></pre>
+<pre class="r"><code>semPlot::semPaths(tofit.model_m)</code></pre>
+<p><img src="p08_files/figure-html/unnamed-chunk-3-1.png" width="672" /></p>
+<p>lavaan package’s notation</p>
+<p><strong>~ : predict</strong> (y~x: y is predicted by x)</p>
+<p><strong>=~ : indicator</strong> (latent variable =~ observed
+indicator)</p>
+<p><strong>~~</strong> Covariance</p>
+<p><strong>~1: intercept or mean </strong> x~1 : mean of variable x</p>
+<p><strong>1</strong>* fixed parameter or loading to one</p>
+<p><strong>NA</strong>* frees parameter or loading</p>
+<p><strong>a</strong>*labels the parameter ‘a’ for model constraints</p>
+</div>
+</div>
+<div id="simple-regression" class="section level2">
+<h2>Simple regression</h2>
+<p>before going further, let’s try simple regression</p>
+<pre class="r"><code>hey&lt;-lm(y~x2, simData)
+summary(hey)</code></pre>
+<pre><code>## 
+## Call:
+## lm(formula = y ~ x2, data = simData)
+## 
+## Residuals:
+##      Min       1Q   Median       3Q      Max 
+## -2.90163 -0.62783 -0.05206  0.59745  2.25316 
+## 
+## Coefficients:
+##             Estimate Std. Error t value Pr(&gt;|t|)    
+## (Intercept)  0.13088    0.06806   1.923 0.055895 .  
+## x2           0.23165    0.06495   3.567 0.000453 ***
+## ---
+## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
+## 
+## Residual standard error: 0.9559 on 198 degrees of freedom
+## Multiple R-squared:  0.06037,    Adjusted R-squared:  0.05563 
+## F-statistic: 12.72 on 1 and 198 DF,  p-value: 0.0004533</code></pre>
+<p>results interpretaion:</p>
+<p>as one unit increase in x1, the y score improves approaximatly 0.508,
+and Significant. the residual standard error is 1.087. the residual
+variance is (1.087)^2 = 1.181569</p>
+<p>This can be done by Lavaan packages</p>
+<pre class="r"><code>hey2&lt;-&#39;
+y ~ 1 + x2
+x2~~x2
+&#39;
+
+hey2fit&lt;-sem(hey2,data=simData)
+summary(hey2fit)</code></pre>
+<pre><code>## lavaan 0.6-11 ended normally after 10 iterations
+## 
+##   Estimator                                         ML
+##   Optimization method                           NLMINB
+##   Number of model parameters                         5
+##                                                       
+##   Number of observations                           200
+##                                                       
+## Model Test User Model:
+##                                                       
+##   Test statistic                                 0.000
+##   Degrees of freedom                                 0
+## 
+## Parameter Estimates:
+## 
+##   Standard errors                             Standard
+##   Information                                 Expected
+##   Information saturated (h1) model          Structured
+## 
+## Regressions:
+##                    Estimate  Std.Err  z-value  P(&gt;|z|)
+##   y ~                                                 
+##     x2                0.232    0.065    3.585    0.000
+## 
+## Intercepts:
+##                    Estimate  Std.Err  z-value  P(&gt;|z|)
+##    .y                 0.131    0.068    1.933    0.053
+##     x2                0.122    0.074    1.658    0.097
+## 
+## Variances:
+##                    Estimate  Std.Err  z-value  P(&gt;|z|)
+##     x2                1.083    0.108   10.000    0.000
+##    .y                 0.905    0.090   10.000    0.000</code></pre>
+<pre class="r"><code>semPlot::semPaths(hey2fit)</code></pre>
+<p><img src="p08_files/figure-html/unnamed-chunk-5-1.png" width="672" /></p>
+<p>results interpretaion:</p>
+<p>the regression coifficient (0.508) is the same.</p>
+<p>However, some difference is here. ML and OLS provide different
+residual variance but the same coefficients.</p>
+</div>
+<div id="path-analysis" class="section level2">
+<h2>Path analysis</h2>
+<p>What is different between SEM and path analysis?</p>
+<p>“SEM is a combination of multiple regression and factor analysis.
+Path analysis deals only with measured variables. two or more measured
+variables” (Source:<a
+href="https://theicph.com/wp-content/uploads/2016/09/How-to-conduct-Path-Analysis-and-SEM-for-Health-Research_24-Sep-2016_Prof-Bhisma-Murti.pdf"
+class="uri">https://theicph.com/wp-content/uploads/2016/09/How-to-conduct-Path-Analysis-and-SEM-for-Health-Research_24-Sep-2016_Prof-Bhisma-Murti.pdf</a>)
+#### Data simulation</p>
+<pre class="r"><code>set.seed(1234)
+x&lt;-rnorm(100)
+m&lt;-0.5*x + rnorm(100)
+y&lt;-0.7*m + rnorm(100)
+data &lt;-data.frame(x=x,m=m,y=y)</code></pre>
+<div id="model-specification" class="section level4">
+<h4>model specification</h4>
+<pre class="r"><code>medmodel&lt;-&#39;
+y~c*x
+m~a*x
+y~b*m
+# indirect effect (a*b)
+ab:=a*b
+# total effect
+total:=c+(a*b)
+&#39;</code></pre>
+<pre class="r"><code>medmodel_m&lt;-sem(medmodel, data=data)
+summary(medmodel_m, fit.measures=T)</code></pre>
+<pre><code>## lavaan 0.6-11 ended normally after 1 iterations
+## 
+##   Estimator                                         ML
+##   Optimization method                           NLMINB
+##   Number of model parameters                         5
+##                                                       
+##   Number of observations                           100
+##                                                       
+## Model Test User Model:
+##                                                       
+##   Test statistic                                 0.000
+##   Degrees of freedom                                 0
+## 
+## Model Test Baseline Model:
+## 
+##   Test statistic                                84.319
+##   Degrees of freedom                                 3
+##   P-value                                        0.000
+## 
+## User Model versus Baseline Model:
+## 
+##   Comparative Fit Index (CFI)                    1.000
+##   Tucker-Lewis Index (TLI)                       1.000
+## 
+## Loglikelihood and Information Criteria:
+## 
+##   Loglikelihood user model (H0)               -281.061
+##   Loglikelihood unrestricted model (H1)       -281.061
+##                                                       
+##   Akaike (AIC)                                 572.122
+##   Bayesian (BIC)                               585.148
+##   Sample-size adjusted Bayesian (BIC)          569.357
+## 
+## Root Mean Square Error of Approximation:
+## 
+##   RMSEA                                          0.000
+##   90 Percent confidence interval - lower         0.000
+##   90 Percent confidence interval - upper         0.000
+##   P-value RMSEA &lt;= 0.05                             NA
+## 
+## Standardized Root Mean Square Residual:
+## 
+##   SRMR                                           0.000
+## 
+## Parameter Estimates:
+## 
+##   Standard errors                             Standard
+##   Information                                 Expected
+##   Information saturated (h1) model          Structured
+## 
+## Regressions:
+##                    Estimate  Std.Err  z-value  P(&gt;|z|)
+##   y ~                                                 
+##     x          (c)    0.036    0.104    0.348    0.728
+##   m ~                                                 
+##     x          (a)    0.474    0.103    4.613    0.000
+##   y ~                                                 
+##     m          (b)    0.788    0.092    8.539    0.000
+## 
+## Variances:
+##                    Estimate  Std.Err  z-value  P(&gt;|z|)
+##    .y                 0.898    0.127    7.071    0.000
+##    .m                 1.054    0.149    7.071    0.000
+## 
+## Defined Parameters:
+##                    Estimate  Std.Err  z-value  P(&gt;|z|)
+##     ab                0.374    0.092    4.059    0.000
+##     total             0.410    0.125    3.287    0.001</code></pre>
+<pre class="r"><code>semPaths(medmodel_m)</code></pre>
+<p><img src="p08_files/figure-html/unnamed-chunk-8-1.png" width="672" /></p>
+</div>
+</div>
+<div id="confirmatory-factor-analysls" class="section level2">
+<h2>Confirmatory factor analysls</h2>
+<p>load the data</p>
+<pre class="r"><code>library(foreign)
+dat &lt;- read.spss(&quot;https://stats.idre.ucla.edu/wp-content/uploads/2018/05/SAQ.sav&quot;,
+                                             to.data.frame=TRUE, use.value.labels = FALSE)</code></pre>
+<pre><code>## re-encoding from UTF-8</code></pre>
+<pre class="r"><code>head(dat,10)</code></pre>
+<pre><code>##    q01 q02 q03 q04 q05 q06 q07 q08 q09 q10 q11 q12 q13 q14 q15 q16 q17 q18 q19
+## 1    2   1   4   2   2   2   3   1   1   2   1   2   2   2   2   3   1   2   3
+## 2    1   1   4   3   2   2   2   2   5   2   2   3   1   3   4   3   2   2   3
+## 3    2   3   2   2   4   1   2   2   2   2   3   3   2   4   2   3   2   3   1
+## 4    3   1   1   4   3   3   4   2   2   4   2   2   2   3   3   3   2   4   2
+## 5    2   1   3   2   2   3   3   2   4   2   2   3   3   2   2   2   2   3   3
+## 6    2   1   3   2   4   4   4   2   4   3   2   4   3   3   5   2   3   5   1
+## 7    2   3   3   2   2   2   2   2   3   2   2   2   2   2   2   2   2   2   3
+## 8    2   2   3   2   2   2   2   2   4   2   2   3   2   2   3   2   2   2   4
+## 9    3   3   1   4   5   3   5   5   3   3   5   5   5   5   5   5   5   5   2
+## 10   2   4   4   3   2   1   2   2   3   2   2   3   2   1   2   3   2   2   3
+##    q20 q21 q22 q23
+## 1    2   2   2   5
+## 2    4   4   4   2
+## 3    4   3   2   2
+## 4    4   4   4   3
+## 5    4   2   4   4
+## 6    5   3   1   4
+## 7    2   2   4   4
+## 8    3   2   4   4
+## 9    5   5   3   3
+## 10   3   2   4   4</code></pre>
+<p>8 items, with one factor</p>
+<pre class="r"><code>cfa&lt;- &#39;
+f =~ q01 + q02 + q03 + q04 + q05 + q06 + q07 + q08&#39;
+
+cfa8&lt;- cfa(cfa, data=dat, std.lv=TRUE)
+#std.lv=T automatically standardize the variance. 
+
+summary(cfa8, fit.measures=T, standardized=T)</code></pre>
+<pre><code>## lavaan 0.6-11 ended normally after 15 iterations
+## 
+##   Estimator                                         ML
+##   Optimization method                           NLMINB
+##   Number of model parameters                        16
+##                                                       
+##   Number of observations                          2571
+##                                                       
+## Model Test User Model:
+##                                                       
+##   Test statistic                               554.191
+##   Degrees of freedom                                20
+##   P-value (Chi-square)                           0.000
+## 
+## Model Test Baseline Model:
+## 
+##   Test statistic                              4164.572
+##   Degrees of freedom                                28
+##   P-value                                        0.000
+## 
+## User Model versus Baseline Model:
+## 
+##   Comparative Fit Index (CFI)                    0.871
+##   Tucker-Lewis Index (TLI)                       0.819
+## 
+## Loglikelihood and Information Criteria:
+## 
+##   Loglikelihood user model (H0)             -26629.559
+##   Loglikelihood unrestricted model (H1)     -26352.464
+##                                                       
+##   Akaike (AIC)                               53291.118
+##   Bayesian (BIC)                             53384.751
+##   Sample-size adjusted Bayesian (BIC)        53333.914
+## 
+## Root Mean Square Error of Approximation:
+## 
+##   RMSEA                                          0.102
+##   90 Percent confidence interval - lower         0.095
+##   90 Percent confidence interval - upper         0.109
+##   P-value RMSEA &lt;= 0.05                          0.000
+## 
+## Standardized Root Mean Square Residual:
+## 
+##   SRMR                                           0.055
+## 
+## Parameter Estimates:
+## 
+##   Standard errors                             Standard
+##   Information                                 Expected
+##   Information saturated (h1) model          Structured
+## 
+## Latent Variables:
+##                    Estimate  Std.Err  z-value  P(&gt;|z|)   Std.lv  Std.all
+##   f =~                                                                  
+##     q01               0.485    0.017   28.942    0.000    0.485    0.586
+##     q02              -0.198    0.019  -10.633    0.000   -0.198   -0.233
+##     q03              -0.612    0.022  -27.989    0.000   -0.612   -0.570
+##     q04               0.632    0.019   33.810    0.000    0.632    0.667
+##     q05               0.554    0.020   28.259    0.000    0.554    0.574
+##     q06               0.554    0.023   23.742    0.000    0.554    0.494
+##     q07               0.716    0.022   32.761    0.000    0.716    0.650
+##     q08               0.424    0.018   23.292    0.000    0.424    0.486
+## 
+## Variances:
+##                    Estimate  Std.Err  z-value  P(&gt;|z|)   Std.lv  Std.all
+##    .q01               0.450    0.015   30.734    0.000    0.450    0.656
+##    .q02               0.685    0.019   35.300    0.000    0.685    0.946
+##    .q03               0.780    0.025   31.157    0.000    0.780    0.675
+##    .q04               0.499    0.018   27.989    0.000    0.499    0.555
+##    .q05               0.623    0.020   31.040    0.000    0.623    0.670
+##    .q06               0.951    0.029   32.711    0.000    0.951    0.756
+##    .q07               0.702    0.024   28.678    0.000    0.702    0.578
+##    .q08               0.581    0.018   32.849    0.000    0.581    0.764
+##     f                 1.000                               1.000    1.000</code></pre>
+<pre class="r"><code>semPaths(cfa8)</code></pre>
+<p><img src="p08_files/figure-html/unnamed-chunk-10-1.png" width="672" /></p>
+<p>interpretaion</p>
+<pre class="r"><code>round(cor(dat[,1:8]),2)</code></pre>
+<pre><code>##       q01   q02   q03   q04   q05   q06   q07   q08
+## q01  1.00 -0.10 -0.34  0.44  0.40  0.22  0.31  0.33
+## q02 -0.10  1.00  0.32 -0.11 -0.12 -0.07 -0.16 -0.05
+## q03 -0.34  0.32  1.00 -0.38 -0.31 -0.23 -0.38 -0.26
+## q04  0.44 -0.11 -0.38  1.00  0.40  0.28  0.41  0.35
+## q05  0.40 -0.12 -0.31  0.40  1.00  0.26  0.34  0.27
+## q06  0.22 -0.07 -0.23  0.28  0.26  1.00  0.51  0.22
+## q07  0.31 -0.16 -0.38  0.41  0.34  0.51  1.00  0.30
+## q08  0.33 -0.05 -0.26  0.35  0.27  0.22  0.30  1.00</code></pre>
+<p>q 02, it is only -.23. If we see the corr table, also can find that
+q02 is weakly associated with other questions. q03,</p>
+</div>
+
+
+
+
+</div>
+
+<script>
+
+// add bootstrap table styles to pandoc tables
+function bootstrapStylePandocTables() {
+  $('tr.odd').parent('tbody').parent('table').addClass('table table-condensed');
+}
+$(document).ready(function () {
+  bootstrapStylePandocTables();
+});
+
+
+</script>
+
+<!-- tabsets -->
+
+<script>
+$(document).ready(function () {
+  window.buildTabsets("TOC");
+});
+
+$(document).ready(function () {
+  $('.tabset-dropdown > .nav-tabs > li').click(function () {
+    $(this).parent().toggleClass('nav-tabs-open');
+  });
+});
+</script>
+
+<!-- code folding -->
+
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+
+</body>
+</html>
