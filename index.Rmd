@@ -1,23 +1,22 @@
 ---
 title: "Portfolio for Data Science for Psychologists (2022 Spring)"
-author: "YRH"
+author: "Yoo Ri Hwang"
 date: "`r Sys.Date()`"
-
 url: https://yrhwang90.github.io/portfolio/
 github-repo: https://github.com/YRHwang90/portfolio
 ---
+     
+This is portfolio for Data Science for Psychologist Course, Spring 2022, Wake Forest University.    
 
-This is portfolio for Data Science for Psychologist Course, Spring 2022, Wake Forest University.
-
-# portfolio 1
+# Portfolio 1
 
 I conducted Multilevel modeling, referring some resources.
 
-# portfolio 2
+# Portfolio 2
 
 During this project, I aimed to be familiar with Actor-Partner Interaction Model (APIM) analysis.
 
-# portfolio 3
+# Portfolio 3
 
 I tried to be familiar with data reshaping functions
 
@@ -25,11 +24,11 @@ I tried to be familiar with data reshaping functions
 
 I aimed to simulate multilevel data
 
-# portfolio 5
+# Portfolio 5
 
 I conducted regression analysis when DV is binomial
 
-# portfolio 6
+# Portfolio 6
 
 I practiced some advanced functions.
 
@@ -37,14 +36,15 @@ I practiced some advanced functions.
 
 I practiced basic simulation
 
-# portfolio 8
+# Portfolio 8
 
 I aimed to be familiar with SEM
 
-# portfolio 9
+# Portfolio 9
 
 A brief practice for K-fold cross validation.
 
-# portfolio 10
+# Portfolio 10
 
-This is not on this website link:
+This is not on this website.
+Portfolio 10: 
