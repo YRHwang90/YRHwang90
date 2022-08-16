@@ -1,7 +1,0 @@
-"0","filepath <- ""https://quantdev.ssri.psu.edu/sites/qdev/files/wisc3raw_gender.csv"""
-"0","wisc3raw <- read.csv(file=url(filepath),header=TRUE)"
-"0",""
-"0","## select the information that we need"
-"0","wiscsub <- wisc3raw[ , c(""id"",""verb1"",""verb2"",""verb4"",""verb6"",""momed"",""grad"", ""female"")]"
-"0",""
-"0","describe(wiscsub)"
