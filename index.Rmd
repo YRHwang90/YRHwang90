@@ -2,8 +2,8 @@
 title: "Portfolio for Data Science for Psychologists (2022 Spring)"
 author: "Yoo Ri Hwang"
 date: "`r Sys.Date()`"
-url: https://yrhwang90.github.io/portfolio/
-github-repo: https://github.com/YRHwang90/portfolio/
+url: https://yrhwang90.github.io/
+github-repo: https://yrhwang90.github.io/
 ---
      
 This is portfolio for Data Science for Psychologist Course, Spring 2022, Wake Forest University.    
