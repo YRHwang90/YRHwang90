@@ -1,26 +1,26 @@
 {
-    "id": "6F5C55C5",
-    "path": "C:/data/GitHub/portfolio/p04.Rmd",
-    "project_path": "p04.Rmd",
+    "id": "79F06A07",
+    "path": "C:/data/GitHub/portfolio/p09.Rmd",
+    "project_path": "p09.Rmd",
     "type": "r_markdown",
-    "hash": "3818734090",
+    "hash": "0",
     "contents": "",
     "dirty": false,
-    "created": 1660623985507.0,
+    "created": 1660625035854.0,
     "source_on_save": false,
-    "relative_order": 5,
+    "relative_order": 6,
     "properties": {
         "source_window_id": "",
         "Source": "Source",
-        "cursorPosition": "473,37",
-        "scrollLine": "453"
+        "cursorPosition": "1,45",
+        "scrollLine": "0"
     },
     "folds": "",
-    "lastKnownWriteTime": 1660624895,
+    "lastKnownWriteTime": 1660625060,
     "encoding": "UTF-8",
     "collab_server": "",
     "source_window": "",
-    "last_content_update": 1660624895982,
+    "last_content_update": 1660625060879,
     "read_only": false,
     "read_only_alternatives": []
 }
