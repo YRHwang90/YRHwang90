@@ -12,7 +12,7 @@
 <meta name="author" content="Yoo Ri Hwang" />
 
 
-<title>APIM (portfolio 2)</title>
+<title>Portfolio 2: dyadic analysis (APIM model)</title>
 
 <script src="site_libs/header-attrs-2.14/header-attrs.js"></script>
 <script src="site_libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
@@ -288,20 +288,21 @@ $(document).ready(function () {
 
 
 
-<h1 class="title toc-ignore">APIM (portfolio 2)</h1>
+<h1 class="title toc-ignore">Portfolio 2: dyadic analysis (APIM
+model)</h1>
 <h4 class="author">Yoo Ri Hwang</h4>
 <h4 class="date">unknown</h4>
 
 </div>
 
 
-<div id="source" class="section level1">
-<h1>Source:</h1>
-<p>I used the data and follow the general tutorial of this website:</p>
+<div id="source-and-references" class="section level1">
+<h1>Source and references:</h1>
+<p>I used the data and follow the general tutorials of the following
+websites:</p>
 <p><a
 href="https://quantdev.ssri.psu.edu/tutorials/actor-partner-interdependence-model-apim-basic-dyadicbivariate-analysis"
 class="uri">https://quantdev.ssri.psu.edu/tutorials/actor-partner-interdependence-model-apim-basic-dyadicbivariate-analysis</a></p>
-<p>and these following referneces:</p>
 <p><a
 href="https://bigdata.duke.edu/projects/actor-partner-interdependence-model-r-mental-and-physical-health-spouses"
 class="uri">https://bigdata.duke.edu/projects/actor-partner-interdependence-model-r-mental-and-physical-health-spouses</a></p>
@@ -315,19 +316,19 @@ class="uri">https://randilgarcia.github.io/week-dyad-workshop/Distinguishable.ht
 <div id="overview" class="section level1">
 <h1>Overview</h1>
 <p>Actor Partner Interdependence Model (APIM)</p>
-<p>APIM model for distinguishable dyads. (Two intercept approach)</p>
+<p>APIM model for distinguishable dyads.</p>
+<div id="two-intercept-approach" class="section level2">
+<h2>Two intercept approach</h2>
+<p>I took Two intercept approach</p>
+</div>
 <div id="prepare-for-analysis" class="section level2">
 <h2>Prepare for analysis</h2>
 <p>packages</p>
-<pre class="r"><code>library(ggplot2)   </code></pre>
-<pre><code>## Warning: package &#39;ggplot2&#39; was built under R version 4.1.3</code></pre>
-<pre class="r"><code>library(nlme)     
-library(psych)     </code></pre>
-<pre><code>## Warning: package &#39;psych&#39; was built under R version 4.1.3</code></pre>
-<pre class="r"><code>library(reshape)   </code></pre>
-<pre><code>## Warning: package &#39;reshape&#39; was built under R version 4.1.3</code></pre>
-<pre class="r"><code>library(dplyr)</code></pre>
-<pre><code>## Warning: package &#39;dplyr&#39; was built under R version 4.1.3</code></pre>
+<pre class="r"><code>library(ggplot2)   
+library(nlme)     
+library(psych)     
+library(reshape)   
+library(dplyr)</code></pre>
 <p>data download</p>
 <pre class="r"><code>filepath &lt;- &quot;https://quantdev.ssri.psu.edu/sites/qdev/files/wisc3raw_gender.csv&quot;
 wisc4raw&lt;-read.csv(file=url(filepath), header=T)
@@ -478,8 +479,8 @@ print(head(data_melt,10))</code></pre>
 </div>
 <div id="apim-analysis" class="section level2">
 <h2>APIM ANALYSIS</h2>
-<p>The website’s explanation is not detailed enough for understand. Here
-is some steps for undertanding this model.</p>
+<p>The website’s explanation is not detailed enough for understand.
+These are some steps to understand this model.</p>
 <ol style="list-style-type: decimal">
 <li>DV= Grade 6 outcome.</li>
 <li>We have both Verbal, and performance.</li>
@@ -594,7 +595,7 @@ summary(apim_full)</code></pre>
 <p><strong>intercept</strong> :<br />
 19.869325 : expected verbal score at grade 6 when grade 1 verb/perfo
 scores are zero.<br />
-30.049124 : expected perforamce score at grade 6 when grade 1 verb/perfo
+30.049124 : expected performace score at grade 6 when grade 1 verb/perfo
 scores are zero.</p>
 <p><strong>verb_on:verb1 0.809886</strong><br />
 1 point increase in verbal grade 1 is associated with 0.81 difference in

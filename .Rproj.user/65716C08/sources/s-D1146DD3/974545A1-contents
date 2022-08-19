@@ -3,8 +3,10 @@ output_dir: docs
 navbar:
   title: "Portfolio"
   left:
-    - text: "Index"
+    - text: "Home"
       href: index.html
+    - text: "About"
+      href: about.html
     - text: "Portfolio 1"
       href: p01.html
     - text: "Portfolio 2"
@@ -23,4 +25,5 @@ navbar:
       href: p08.html
     - text: "Portfolio 9"
       href: p09.html
-   
+    - text: "Portfolio 10"
+      href: p10.html

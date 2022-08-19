@@ -12,7 +12,7 @@
 <meta name="author" content="Yoo Ri Hwang" />
 
 
-<title>Portfolio1: MLM</title>
+<title>Portfolio1: Multilevel modeling</title>
 
 <script src="site_libs/header-attrs-2.14/header-attrs.js"></script>
 <script src="site_libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
@@ -250,7 +250,7 @@ $(document).ready(function () {
   <a href="index.html">Index</a>
 </li>
 <li>
-  <a href="p01.html">Portfolio 1</a>
+  <a href="p01.html">Portfolio1: MLM</a>
 </li>
 <li>
   <a href="p02.html">Portfolio 2</a>
@@ -288,7 +288,7 @@ $(document).ready(function () {
 
 
 
-<h1 class="title toc-ignore">Portfolio1: MLM</h1>
+<h1 class="title toc-ignore">Portfolio1: Multilevel modeling</h1>
 <h4 class="author">Yoo Ri Hwang</h4>
 <h4 class="date">1/15/2022</h4>
 
@@ -387,12 +387,12 @@ summary(data_raw)</code></pre>
 ##  3rd Qu.: 0.785   3rd Qu.:  5.737   3rd Qu.: 0.5000  
 ##  Max.   : 4.785   Max.   : 10.737   Max.   : 0.5000</code></pre>
 <p>data structure:</p>
-<p>pupils are nested in the class. trying to predict popluarity of pupil
-by pupil’s gender and extravert. Furthermore, teacher’s experience
-(class-level variable) will be considered.</p>
+<p>pupils are nested in the class. trying to predict popularity of pupil
+by pupil’s gender and extrovert. Furthermore, teacher’s experience
+(level 2 variable) will be considered.</p>
 <p>To sum up, we have</p>
 <p>Level-1 IV: pupil gender (SEX): coded as boy=0, girl=1<br />
-Pupil’s extroversion (extrav) : 10-point scale.</p>
+Pupil’s extroversion (extrov) : 10-point scale.</p>
 <p>Level-2IV: teacher’s experience (texp)</p>
 <p>subsetting the data</p>
 <pre class="r"><code># we only take what we need
@@ -438,7 +438,6 @@ tibble::glimpse(head(data_pop,10))</code></pre>
   aes(x = extrav, y = popular)+ 
   geom_point()+
   stat_smooth(method=lm)</code></pre>
-<pre><code>## `geom_smooth()` using formula &#39;y ~ x&#39;</code></pre>
 <p><img src="p01_files/figure-html/unnamed-chunk-5-1.png" width="672" />
 2. consider cluster (group)</p>
 <p>just for curious, we pick first 9 class and see</p>
@@ -449,7 +448,6 @@ tibble::glimpse(head(data_pop,10))</code></pre>
   geom_point()+
   stat_smooth(method=lm)+
   facet_wrap(~ class) </code></pre>
-<pre><code>## `geom_smooth()` using formula &#39;y ~ x&#39;</code></pre>
 <p><img src="p01_files/figure-html/unnamed-chunk-6-1.png" width="672" />
 3.</p>
 <pre class="r"><code>ggplot(data      = data_pop,
@@ -474,17 +472,11 @@ class="uri">https://www.rensvandeschoot.com/tutorials/lme4/</a>”</p>
 </div>
 <div id="centering" class="section level2">
 <h2>Centering</h2>
-<p>In the tutorial website, the author did not do the centering and keep
-analyzing. However, in most cases, it is not useful unless it has
-certian theoritical reasons.</p>
+<p>Centering is very important!</p>
 <pre class="r"><code>#install.packages(&#39;misty&#39;)
-library(misty)</code></pre>
-<pre><code>## Warning: package &#39;misty&#39; was built under R version 4.1.3</code></pre>
-<pre><code>## |-------------------------------------|
-## | misty 0.4.5 (2022-04-29)            |
-## | Miscellaneous Functions T. Yanagida |
-## |-------------------------------------|</code></pre>
-<pre class="r"><code>#center level-1 predictor at the grandmean
+library(misty)
+
+#center level-1 predictor at the grandmean
 data_pop$cgm_extrav&lt;-misty::center(data_pop$extrav)
 data_pop$cgm_sex&lt;-misty::center(data_pop$sex)
 data_pop$cgm_texp&lt;-misty::center(data_pop$texp)
@@ -700,10 +692,8 @@ u_{2j}\]</span></p>
 <p><span class="math display">\[y_{ij} = \gamma_{00} +
 \gamma_{10}Extra_{ij} + \gamma_{20}SEX_{ij} + u_{0j} + u_{1j}Extrav_{ij}
 + u_{2j}SEX_{ij} + e_{ij}\]</span></p>
-<pre class="r"><code>tworam&lt;-lmer(popular~1 + cgm_extrav + cgm_sex + (1 + cgm_extrav+cgm_sex|class), data=data_pop)</code></pre>
-<pre><code>## Warning in checkConv(attr(opt, &quot;derivs&quot;), opt$par, ctrl = control$checkConv, :
-## Model failed to converge with max|grad| = 0.00263437 (tol = 0.002, component 1)</code></pre>
-<pre class="r"><code>summary(tworam)</code></pre>
+<pre class="r"><code>tworam&lt;-lmer(popular~1 + cgm_extrav + cgm_sex + (1 + cgm_extrav+cgm_sex|class), data=data_pop)
+summary(tworam)</code></pre>
 <pre><code>## Linear mixed model fit by REML. t-tests use Satterthwaite&#39;s method [
 ## lmerModLmerTest]
 ## Formula: popular ~ 1 + cgm_extrav + cgm_sex + (1 + cgm_extrav + cgm_sex |  
@@ -742,9 +732,8 @@ u_{2j}\]</span></p>
 variance very close to zero, this model should be reconsidered :
 convergency</p>
 <p>Alternatively, using ML:</p>
-<pre class="r"><code>tworam&lt;-lmer(popular~1 + cgm_extrav + cgm_sex + (1 + cgm_extrav+cgm_sex|class), data=data_pop, REML=FALSE)</code></pre>
-<pre><code>## boundary (singular) fit: see help(&#39;isSingular&#39;)</code></pre>
-<pre class="r"><code>summary(tworam)</code></pre>
+<pre class="r"><code>tworam&lt;-lmer(popular~1 + cgm_extrav + cgm_sex + (1 + cgm_extrav+cgm_sex|class), data=data_pop, REML=FALSE)
+summary(tworam)</code></pre>
 <pre><code>## Linear mixed model fit by maximum likelihood . t-tests use Satterthwaite&#39;s
 ##   method [lmerModLmerTest]
 ## Formula: popular ~ 1 + cgm_extrav + cgm_sex + (1 + cgm_extrav + cgm_sex |  
@@ -861,9 +850,8 @@ interaction)</h2>
 u_{1j}*Extrav_{ij} + u_{2j}SEX_{ij} + u_{0j}+e_{ij}\]</span></p>
 <pre class="r"><code>#My preference towards REML :D
 # 
-inter&lt;-lmer(popular~1+cgm_extrav+cgm_sex+cgm_texp + cgm_extrav*cgm_texp+cgm_sex*cgm_texp+ (1+cgm_extrav+cgm_sex|class), data = data_pop)</code></pre>
-<pre><code>## boundary (singular) fit: see help(&#39;isSingular&#39;)</code></pre>
-<pre class="r"><code>summary(inter)</code></pre>
+inter&lt;-lmer(popular~1+cgm_extrav+cgm_sex+cgm_texp + cgm_extrav*cgm_texp+cgm_sex*cgm_texp+ (1+cgm_extrav+cgm_sex|class), data = data_pop)
+summary(inter)</code></pre>
 <pre><code>## Linear mixed model fit by REML. t-tests use Satterthwaite&#39;s method [
 ## lmerModLmerTest]
 ## Formula: popular ~ 1 + cgm_extrav + cgm_sex + cgm_texp + cgm_extrav *  
@@ -908,10 +896,8 @@ inter&lt;-lmer(popular~1+cgm_extrav+cgm_sex+cgm_texp + cgm_extrav*cgm_texp+cgm_s
 <pre><code>## [1] TRUE</code></pre>
 <pre class="r"><code># the matrix argument is singular. </code></pre>
 <p>If i did not center level 2 variable, it is like this.</p>
-<pre class="r"><code>inter&lt;-lmer(popular~1+cgm_extrav+cgm_sex+texp + cgm_extrav*texp+cgm_sex*texp+ (1+cgm_extrav+cgm_sex|class), data = data_pop)</code></pre>
-<pre><code>## Warning in checkConv(attr(opt, &quot;derivs&quot;), opt$par, ctrl = control$checkConv, :
-## Model failed to converge with max|grad| = 0.00242626 (tol = 0.002, component 1)</code></pre>
-<pre class="r"><code>summary(inter)</code></pre>
+<pre class="r"><code>inter&lt;-lmer(popular~1+cgm_extrav+cgm_sex+texp + cgm_extrav*texp+cgm_sex*texp+ (1+cgm_extrav+cgm_sex|class), data = data_pop)
+summary(inter)</code></pre>
 <pre><code>## Linear mixed model fit by REML. t-tests use Satterthwaite&#39;s method [
 ## lmerModLmerTest]
 ## Formula: popular ~ 1 + cgm_extrav + cgm_sex + texp + cgm_extrav * texp +  

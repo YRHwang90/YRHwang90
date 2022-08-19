@@ -15,13 +15,13 @@ library(texreg)
 
 ```
 ```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE)
+knitr::opts_chunk$set(warning = FALSE, message = FALSE) 
 ```
 
 ## Overview
 
 Connected to Portfolio7 (disregard numeric order)
-I aim to be familar with multilevel simulation in this project. 
+I aim to be familiar with multilevel simulation in this project. 
 
 However, I could not understand every function or every concept that
 used in here (i.e., kernal density, the list things, and .x...).
@@ -411,7 +411,7 @@ summarize(fixefs_time,
 
 ## exercise
 
-sample size effects on fixed effect in this model
+sample size influences on fixed effect in this model
 (not in the tutorial )
 20x4 sample size (80)
 ```{r}
@@ -471,4 +471,4 @@ fixefs_time%>%
  
 ```
 
-As this simulation graph shows, large sample size make graph more normal-like shape. 
+As this simulation graph shows, large sample size makes graph more normal-like shape. 

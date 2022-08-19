@@ -12,7 +12,7 @@
 <meta name="author" content="Yoo Ri Hwang" />
 
 
-<title>portfolio 5: binomial regression</title>
+<title>Portfolio 5: binomial regression</title>
 
 <script src="site_libs/header-attrs-2.14/header-attrs.js"></script>
 <script src="site_libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
@@ -288,15 +288,15 @@ $(document).ready(function () {
 
 
 
-<h1 class="title toc-ignore">portfolio 5: binomial regression</h1>
+<h1 class="title toc-ignore">Portfolio 5: binomial regression</h1>
 <h4 class="author">Yoo Ri Hwang</h4>
 <h4 class="date">4/26/2022</h4>
 
 </div>
 
 
-<div id="reference" class="section level1">
-<h1>reference</h1>
+<div id="referencesource" class="section level1">
+<h1>reference/Source</h1>
 <p>Reference 1:<a
 href="https://quantdev.ssri.psu.edu/tutorials/regression-continuous-count-and-binary-outcomes"
 class="uri">https://quantdev.ssri.psu.edu/tutorials/regression-continuous-count-and-binary-outcomes</a><br />
@@ -309,38 +309,18 @@ class="uri">https://bookdown.org/ndphillips/YaRrr/logistic-regression-with-glmfa
 <p>In this portfolio, I aimed to be familiar with regression, especially
 when the DV is non-normal. Especially, this project will investigate
 when the DV is binomial. (which menas that DV is just 0 or 1)</p>
-<p>A conventional regression (OLS) assumes that DV is normally
-distributed. However, if DV is not normally distributed, it violates
-this assumption.</p>
+<p>A conventional regression (OLS) assumes that DV follows normal
+distribution. However, if DV does not follow normal distribution, it
+violates this assumption.</p>
 <p>Of Course, if the sample size is large enough, linear regression
 remains sounds (source: <a
 href="https://iovs.arvojournals.org/article.aspx?articleid=2128171"
 class="uri">https://iovs.arvojournals.org/article.aspx?articleid=2128171</a>)</p>
 <div id="package" class="section level2">
 <h2>package</h2>
-<pre class="r"><code>library(psych)</code></pre>
-<pre><code>## Warning: package &#39;psych&#39; was built under R version 4.1.3</code></pre>
-<pre class="r"><code>library(ggplot2)</code></pre>
-<pre><code>## Warning: package &#39;ggplot2&#39; was built under R version 4.1.3</code></pre>
-<pre><code>## 
-## Attaching package: &#39;ggplot2&#39;</code></pre>
-<pre><code>## The following objects are masked from &#39;package:psych&#39;:
-## 
-##     %+%, alpha</code></pre>
-<pre class="r"><code>library(tidyverse)</code></pre>
-<pre><code>## -- Attaching packages --------------------------------------- tidyverse 1.3.1 --</code></pre>
-<pre><code>## v tibble  3.1.4     v dplyr   1.0.8
-## v tidyr   1.2.0     v stringr 1.4.0
-## v readr   2.1.2     v forcats 0.5.1
-## v purrr   0.3.4</code></pre>
-<pre><code>## Warning: package &#39;tidyr&#39; was built under R version 4.1.3</code></pre>
-<pre><code>## Warning: package &#39;readr&#39; was built under R version 4.1.3</code></pre>
-<pre><code>## Warning: package &#39;dplyr&#39; was built under R version 4.1.3</code></pre>
-<pre><code>## -- Conflicts ------------------------------------------ tidyverse_conflicts() --
-## x ggplot2::%+%()   masks psych::%+%()
-## x ggplot2::alpha() masks psych::alpha()
-## x dplyr::filter()  masks stats::filter()
-## x dplyr::lag()     masks stats::lag()</code></pre>
+<pre class="r"><code>library(psych)
+library(ggplot2)
+library(tidyverse)</code></pre>
 </div>
 <div id="load-the-data" class="section level2">
 <h2>load the data</h2>
@@ -422,8 +402,6 @@ be 1. To interpret easily, I put exp() function to the coef.</p>
   guides(color=guide_legend(title=&quot;Female&quot;))+
   theme_bw()+
   stat_smooth(method=&#39;glm&#39;,methodarges=list(family=&#39;binomial&#39;,se=TRUE, fullrange=TRUE))</code></pre>
-<pre><code>## Warning: Ignoring unknown parameters: methodarges</code></pre>
-<pre><code>## `geom_smooth()` using formula &#39;y ~ x&#39;</code></pre>
 <p><img src="p05_files/figure-html/unnamed-chunk-5-1.png" width="672" /></p>
 <p>so far so good</p>
 </div>

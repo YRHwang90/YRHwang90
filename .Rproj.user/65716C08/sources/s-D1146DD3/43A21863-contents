@@ -1,13 +1,9 @@
 ---
-title: "Portfolio1: MLM"
+title: "Portfolio1: Multilevel modeling"
 author: "Yoo Ri Hwang"
 date: "1/15/2022"
 output: html_document
 ---
-
-```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE)
-```
 
 
 # Source 
@@ -30,6 +26,12 @@ ICC calculated based on the null model.
 # Prepare
 
 ##  load library
+
+
+```{r setup, include=FALSE} 
+knitr::opts_chunk$set(warning = FALSE, message = FALSE) 
+```
+
 ```{r, warning=FALSE, message=FALSE}
 
 library(foreign)
@@ -80,13 +82,13 @@ summary(data_raw)
 data structure:
 
 pupils are nested in the class. 
-trying to predict popluarity of pupil by pupil's gender and extravert. Furthermore, teacher's experience (class-level variable) will be considered. 
+trying to predict popularity of pupil by pupil's gender and extrovert. Furthermore, teacher's experience (level 2 variable) will be considered. 
 
 To sum up, we have
 
 Level-1 IV:
 pupil gender (SEX): coded as boy=0, girl=1  
-Pupil's extroversion (extrav) : 10-point scale.  
+Pupil's extroversion (extrov) : 10-point scale.  
 
 Level-2IV:
 teacher's experience (texp)
@@ -165,7 +167,7 @@ This code (for third graph) was adpated from "https://www.rensvandeschoot.com/tu
 
 ## Centering
 
-In the tutorial website, the author did not do the centering and keep analyzing. However, in most cases, it is not useful unless it has certian theoritical reasons. 
+Centering is very important!  
 
 ```{r}
 #install.packages('misty')
