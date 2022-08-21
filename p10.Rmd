@@ -1,0 +1,13 @@
+---
+title: "Portfolio 10"
+author: "Yoo Ri Hwang"
+date: '2022-08-19'
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## This is my master thesis research project
+https://github.com/YRHwang90/Portfolio10
